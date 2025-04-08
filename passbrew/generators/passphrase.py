@@ -107,6 +107,13 @@ class PassphraseGenerator(BaseUserFriendlyPasswordGenerator):
         ]
 
     def _get_words(self, count):
+        """
+        Select a random sample of words and add them to the password preparation list.
+
+        :param count: The number of words to sample.
+        :type count: int
+        :raises ValueError: If `count` is greater than the number of available
+                            words in the `words` attribute."""
         self._password_prep.extend(random.sample(self.words, k=count))
 
     def generate(self, password_length: int, use_word_count: bool = True) -> str:

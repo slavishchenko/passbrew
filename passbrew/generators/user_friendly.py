@@ -13,17 +13,7 @@ from .base_generator import BasePasswordGenerator
 
 class BaseUserFriendlyPasswordGenerator(BasePasswordGenerator):
     """
-    A class to generate user-friendly, but secure passwords with a customizable
-    set of parameters.
-
-    The UserFriendlyPassword allows users to create passwords of varying lengths
-    and complexity. Users can define the inclusion of uppercase letters,
-    lowercase letters, digits, and special characters based on their security
-    requirements.
-
-    Methods:
-        generate() -> str:
-            Generates and returns a random password based on the specified attributes.
+    A base class for user-friendly password generators.
     """
 
     _min_length = 12
@@ -53,6 +43,30 @@ class BaseUserFriendlyPasswordGenerator(BasePasswordGenerator):
 
 
 class UserFriendlyPasswordGenerator(BaseUserFriendlyPasswordGenerator):
+    """
+    A class to generate user-friendly and secure passwords with customizable
+    parameters including special characters, numbers, and spaces.
+
+    The `UserFriendlyPasswordGenerator` extends the base user-friendly password
+    generator by allowing additional configurations for special characters,
+    numeric characters, and spaces in the password. This class ensures the
+    generation of passwords that are both user-friendly and adhere to security
+    requirements.
+
+    Methods:
+        set_char_amount(value: int) -> None:
+        Class method to set the number of special characters used in a password.
+
+        set_num_amount(value: int) -> None:
+            Class method to set the number of numeric characters used in a password.
+
+        set_empty_space_amount(value: int) -> None:
+            Class method to set the number of empty spaces used in a password.
+
+        generate(length: int) -> str:
+            Generates a random password of a specified length
+    """
+
     _special_chars = [
         "!",
         "#",
