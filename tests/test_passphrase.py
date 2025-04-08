@@ -1,6 +1,6 @@
 import pytest
 
-from passbrew.errors import ExceedsMaximumLength, ValidationError
+from passbrew.exceptions import ExceedsMaximumLength, ValidationError
 from passbrew.generators.passphrase import PassphraseGenerator
 
 

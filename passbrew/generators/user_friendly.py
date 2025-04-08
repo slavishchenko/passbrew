@@ -1,9 +1,9 @@
 import random
 from typing import List
 
-from passbrew.errors import ValidationError
+from passbrew.exceptions import ValidationError
 from passbrew.utils import capitalize_random_letter, filter_list
-from passbrew.validators import (
+from passbrew.validation import (
     is_positive_integer,
     validate_length,
 )

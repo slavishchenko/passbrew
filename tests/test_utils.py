@@ -1,6 +1,6 @@
 import pytest
 
-from passbrew.errors import ValidationError
+from passbrew.exceptions import ValidationError
 from passbrew.utils import filter_list
 
 

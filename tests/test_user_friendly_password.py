@@ -1,6 +1,6 @@
 import pytest
 
-from passbrew.errors import ValidationError
+from passbrew.exceptions import ValidationError
 from passbrew.generators.user_friendly import UserFriendlyPasswordGenerator
 
 

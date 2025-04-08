@@ -1,7 +1,7 @@
 from pathlib import Path
 
-from passbrew.errors import ExceedsMaximumLength, ValidationError
-from passbrew.validators import (
+from passbrew.exceptions import ExceedsMaximumLength, ValidationError
+from passbrew.validation import (
     is_greater_than,
     is_less_than,
     is_positive_integer,

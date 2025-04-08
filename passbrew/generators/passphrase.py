@@ -1,8 +1,8 @@
 import random
 
-from passbrew.errors import ValidationError
+from passbrew.exceptions import ValidationError
 from passbrew.generators.user_friendly import BaseUserFriendlyPasswordGenerator
-from passbrew.validators import is_greater_than, is_less_than, is_positive_integer
+from passbrew.validation import is_greater_than, is_less_than, is_positive_integer
 
 
 class PassphraseGenerator(BaseUserFriendlyPasswordGenerator):

@@ -1,6 +1,6 @@
 from typing import List
 
-from passbrew.errors import ExceedsMaximumLength, IntError, ValidationError
+from passbrew.exceptions import ExceedsMaximumLength, IntError, ValidationError
 
 
 def is_integer(value: int) -> bool:

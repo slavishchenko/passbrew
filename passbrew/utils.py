@@ -1,6 +1,6 @@
 from typing import List
 
-from passbrew.validators import is_list_of_strings, is_positive_integer
+from passbrew.validation import is_list_of_strings, is_positive_integer
 
 
 def filter_list(lst: List[str], max_length: int) -> List[str]:

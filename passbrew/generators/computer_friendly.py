@@ -1,7 +1,7 @@
 import secrets
 
 from passbrew.generators.base_generator import BasePasswordGenerator
-from passbrew.validators import validate_length
+from passbrew.validation import validate_length
 
 
 class ComputerFriendlyPassword(BasePasswordGenerator):
