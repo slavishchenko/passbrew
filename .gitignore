@@ -1,0 +1,5 @@
+TODO.txt
+assets/
+__pycache__/
+.pytest_cache/
+test.py
