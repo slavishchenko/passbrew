@@ -4,7 +4,7 @@ from passbrew.generators.base_generator import BasePasswordGenerator
 from passbrew.validation import validate_length
 
 
-class ComputerFriendlyPassword(BasePasswordGenerator):
+class ComputerFriendlyPasswordGenerator(BasePasswordGenerator):
     """
     Refactor this later.
     """

@@ -1,65 +1,104 @@
-# Password Generator Module
+# PassBrew
 
-## Overview
-
-The Password Generator module is a Python-based tool for generating secure passwords and user-friendly passphrases. It allows users to create customizable passwords that meet various security criteria, ensuring both strength and memorability.
+PassBrew is a customizable password generation module written in Python. It allows users to create secure, random passwords and passphrases based on specified criteria such as length, character types, and complexity requirements.
 
 ## Features
 
-- **Customizable Length**: Set minimum and maximum lengths for generated passwords.
-- **User-Friendly Passwords**: Generate passwords that are easy to remember yet secure.
-- **Passphrase Generation**: Create passphrases using random words, ensuring they're memorable and secure.
-- **Special Characters and Numbers**: Optionally include special characters, numbers, and spaces for added complexity.
-- **Validation**: Input lengths are validated against set constraints to prevent incorrect usage.
+- Generate computer-friendly passwords using secure random methods.
+- Generate user-friendly passwords that include customizable parameters like special characters, numbers, and uppercase letters.
+- Create memorable passphrases using a selection of random words.
+- Flexible settings for minimum and maximum password length, special character counts, and more.
 
 ## Installation
 
-To use this module, ensure you have Python installed on your system. No external dependencies are required beyond the standard library.
+To use PassBrew, simply clone the repository and install the required dependencies:
 
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/yourusername/password-generator.git
-    cd password-generator
-    ```
-
-2. Ensure that the `words.txt` file is located in the same directory as your script for word selection.
+```bash
+git clone https://github.com/slavishchenko/passbrew.git
+cd passbrew
+pip install -r requirements.txt
+```
 
 ## Usage
 
-Here’s an example of how to use the Password Generator module to create passwords and passphrases:
+To use PassBrew, you can create an instance of `ComputerFriendlyPasswordGenerator`, `UserFriendlyPasswordGenerator`, or `PassphraseGenerator` classes. Below are some examples:
+
+### Basic Computer-Friendly Password Generation
 
 ```python
-from password import UserFriendlyPassword, Passphrase
+from passbrew.generators.computer_friendly import ComputerFriendlyPasswordGenerator
 
-# Create an instance of UserFriendlyPassword
-friendly_password_generator = UserFriendlyPassword()
+# Create an instance of ComputerFriendlyPasswordGenerator
+computer_friendly_gen = ComputerFriendlyPasswordGenerator()
 
-# Generate a user-friendly password of length 16
-password = friendly_password_generator.generate(length=16)
-print("Generated User-Friendly Password:", password)
+# Generate a computer-friendly password of desired length
+password = computer_friendly_gen.get(16)
+print(f'Generated Computer-Friendly Password: {password}')
+```
 
-# Create an instance of Passphrase
-passphrase_generator = Passphrase()
+### User-Friendly Password Generation
 
-# Generate a passphrase of length 20 (characters)
-passphrase = passphrase_generator.generate(password_length=20)
-print("Generated Passphrase:", passphrase)
+```python
+from passbrew.generators.user_friendly import UserFriendlyPasswordGenerator
+
+# Create an instance of UserFriendlyPasswordGenerator
+user_friendly_gen = UserFriendlyPasswordGenerator()
+
+# Set desired amounts for special characters and numbers
+UserFriendlyPasswordGenerator.set_char_amount(2)
+UserFriendlyPasswordGenerator.set_num_amount(3)
+
+# Generate a user-friendly password
+user_password = user_friendly_gen.generate(20)
+print(f'Generated User-Friendly Password: {user_password}')
+```
+
+### Generate a Passphrase
+
+```python
+from passbrew.generators.passphrase import PassphraseGenerator
+
+# Create an instance of PassphraseGenerator
+passphrase_gen = PassphraseGenerator()
+
+# Set min and max word count
+PassphraseGenerator.set_min_word_count(4)
+PassphraseGenerator.set_max_word_count(8)
+
+# Generate a passphrase based on word count
+passphrase = passphrase_gen.generate(5, use_word_count=True)
+print(f'Generated Passphrase: {passphrase}')
 ```
 
 ## API Reference
 
-### Classes
+For a detailed description of methods and parameters:
 
-- **UserFriendlyPassword**
-    - **generate(length: int) -> str**: Generates a user-friendly password of the specified length.
+- **BasePasswordGenerator**
+  - `set_min_length(value: int)`
+  - `set_max_length(value: int)`
+  - `validate_input(value: int) -> bool`
+  - `_get() -> str`
 
-- **Passphrase**
-    - **generate(password_length: int) -> str**: Generates a user-friendly passphrase composed of random words.
+- **ComputerFriendlyPassword**
+  - `get(length: int) -> str`
+  
+- **UserFriendlyPasswordGenerator**
+  - `set_char_amount(value: int)`
+  - `set_num_amount(value: int)`
+  - `generate(length: int) -> str`
 
-### Customization Options
-- Adjust the number of special characters and digits by modifying `char_amount` and `num_amount` attributes.
-- Set minimum and maximum password lengths using `set_min_length` and `set_max_length`.
+- **PassphraseGenerator**
+  - `set_min_word_count(value: int)`
+  - `set_max_word_count(value: int)`
+  - `generate(password_length: int, use_word_count: bool = True) -> str`
+
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+## Acknowledgements
+
+- [Python's `secrets` module](https://docs.python.org/3/library/secrets.html) for secure random number generation.
+```
