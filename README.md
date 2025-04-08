@@ -78,7 +78,6 @@ For a detailed description of methods and parameters:
   - `set_min_length(value: int)`
   - `set_max_length(value: int)`
   - `validate_input(value: int) -> bool`
-  - `_get() -> str`
 
 - **ComputerFriendlyPassword**
   - `get(length: int) -> str`
@@ -101,4 +100,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Acknowledgements
 
 - [Python's `secrets` module](https://docs.python.org/3/library/secrets.html) for secure random number generation.
-```
